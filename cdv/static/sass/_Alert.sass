@@ -1,0 +1,36 @@
+
+// Alert
+
+.bs--alert
+    position: relative 
+    margin-bottom: 1em
+    padding: 1.1em 1.4em 0.8em 1.4em
+    background: $color-lightgrey
+    
+    &.bs--alert-primary
+	    color: $color-primary
+	    background: lighten( $color-primary , 50%) 
+	    
+    &.bs--alert-secondary
+	    color: $color-secondary
+	    background: lighten( $color-secondary , 35%) 
+	    
+    &.bs--alert-success
+	    color: $color-valid
+	    background: lighten( $color-valid , 35%) 
+	    
+    &.bs--alert-error
+	    color: $color-error
+	    background: lighten( $color-error , 60%) 
+	    
+    & p
+	    margin-bottom: 0.5em 
+
+    & h1, h2, h3, h4, h5
+	    margin-bottom: 0.2em 
+
+.bs--alert-close
+    position: absolute
+    top: 20px
+    right: 15px
+    color: inherit

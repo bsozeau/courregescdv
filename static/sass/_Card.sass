@@ -1,0 +1,30 @@
+
+// Card
+
+
+.bs--card
+	margin: 0.7em 0
+	display: flex
+	flex: auto
+	width: 100%
+	box-shadow: 0 5px 15px rgba(0,0,0,0.08)
+	overflow: hidden
+
+.bs--card-media img
+	width: 100%
+
+.bs--card-body
+	padding: 1.2em 1.2em 0.5em
+
+.bs--card-default
+	flex-direction: column
+
+.bs--card-left,
+.bs--card-right
+	flex-direction: row
+
+@media only screen and (max-width: 992px)
+
+	.bs--card-left,
+	.bs--card-right
+		flex-direction: column

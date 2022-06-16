@@ -1,0 +1,147 @@
+
+// Checkbox
+
+
+input[type='checkbox'].checkbox
+  position: absolute // take it out of document flow
+  opacity: 0 // hide it
+
+  & + label
+    position: relative
+    cursor: pointer
+    padding: 0
+
+  // Box.
+  & + label:before
+    content: ''
+    margin-right: 10px
+    display: inline-block
+    vertical-align: text-top
+    width: 20px
+    height: 20px
+    background: white
+    border: 2px solid $color-mediumgrey
+    border-radius: $radius
+
+  // Box hover
+  &:hover + label:before
+    background: $color-primary
+  
+  // Box focus
+  &:focus + label:before
+    border: 2px solid $color-darkgrey
+
+  // Box checked
+  &:checked + label:before
+    background: $color-primary
+  
+  // Disabled state label.
+  &:disabled + label
+    color: $color-mediumgrey
+    cursor: auto
+
+  // Disabled box.
+  &:disabled + label:before
+    box-shadow: none
+    background: #ddd
+
+  // Checkmark. Could be replaced with an image
+  &:checked + label:after
+    content: ''
+    position: absolute
+    left: 5px
+    top: 12px
+    background: white
+    width: 2px
+    height: 2px
+    transform: rotate(45deg)
+    box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white
+
+
+input[type='checkbox'].onoff
+    opacity: 0
+    position: absolute
+        
+    & + label
+        position: relative
+        
+        &:before
+            content: ""
+            display: inline-block
+            top: 0.35em
+            margin-right: 0.6em
+            background: $color-lightgrey
+            width: 2.7em
+            height: 1.5em
+            border-radius: $radius
+            position: relative
+            cursor: pointer
+            overflow: hidden
+
+        &:after
+            content: ""
+            display: block
+            position: absolute
+            top: 0.38em
+            width: 1.3em
+            height: 1.2em
+            margin-top: 0.12em
+            margin-left: 0.15em
+            border-radius: $radius
+            background: white
+            box-shadow: -1px 2px 4px 0px $color-mediumgrey
+            transition: transform 0.2s ease-in
+
+    &:checked ~ label:before
+        background: $color-valid
+
+    &:checked ~ label:after
+        transform: translatex(1.1em)
+        transition: transform 0.2s ease-in
+
+
+/* radio buttons */
+input[type="radio"] + label
+  display: inline-block
+  cursor: pointer
+  position: relative
+  padding-left: 30px
+  margin-right: 15px
+  font-size: 13px
+  
+  &:before
+    content: ""
+    display: block
+    width: 22px
+    height: 22px
+    margin-right: 14px
+    position: absolute
+    top: -3px
+    left: 0
+    border: 1px solid #aaa
+    background-color: #fff
+    border-radius: 50%
+
+
+
+input[type="radio"]
+  display: none !important
+  *display: inline
+
+  &:hover + label:after,
+  &:checked + label:after
+    content: ""
+    display: block
+    position: absolute
+    top: 3px
+    left: 6px
+    width: 10px
+    height: 10px
+    border-radius: 50%
+    background: #b7b7b7
+
+  &:checked + label:after
+    top: 2px
+    left: 5px
+    width: 12px
+    height: 12px

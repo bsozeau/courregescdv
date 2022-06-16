@@ -1,0 +1,145 @@
+
+// Input
+
+
+input[type="color"]
+	opacity: 0
+	display: block
+	width: 100%
+	height: 100%
+	border: none
+	cursor: pointer
+	
+.bs--color
+	width: 50px
+	height: 50px
+
+.bs--number
+	font-size: 0
+
+input[type="number"]
+	width: 80px
+	padding: 0 12px
+	vertical-align: top
+	text-align: center
+	outline: none
+	-moz-appearance: textfield
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button
+	-webkit-appearance: none
+	margin: 0
+	
+input[type="number"],
+.bs--number-decrement,
+.bs--number-increment
+	border: 1px solid $color-mediumgrey
+	height: 40px
+	font-size: initial
+	user-select: none
+
+.bs--number-decrement,
+.bs--number-increment
+	display: inline-block
+	width: 30px
+	line-height: 38px
+	background: $color-lightgrey
+	color: $color-text
+	text-align: center
+	font-weight: bold
+	cursor: pointer
+
+	&:active
+		background: $color-mediumgrey
+
+.bs--number-decrement
+	border-right: none
+	border-radius: $radius 0 0 $radius
+
+.bs--number-increment
+	border-left: none
+	border-radius: 0 $radius $radius 0
+
+input[type=range]
+	-webkit-appearance: none
+	width: 100%
+	margin: -1.3px 0
+
+input[type=range]:focus
+	outline: none
+
+input[type=range]::-webkit-slider-runnable-track
+	width: 100%
+	height: 17.6px
+	cursor: pointer
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0)
+	background: $color-darkgrey
+	border-radius: 14.2px
+	border: 0px solid $color-mediumgrey
+
+input[type=range]::-webkit-slider-thumb
+	box-shadow: 0px 0px 2.5px rgba(0, 0, 0, 0.28), 0px 0px 0px rgba(13, 13, 13, 0.28)
+	border: 0px solid #ffffff
+	height: 15px
+	width: 15px
+	border-radius: 50px
+	background: #fffffd
+	cursor: pointer
+	-webkit-appearance: none
+	margin-top: 1.3px
+
+input[type=range]:focus::-webkit-slider-runnable-track
+	background: $color-darkgrey
+
+input[type=range]::-moz-range-track
+	width: 100%
+	height: 17.6px
+	cursor: pointer
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0)
+	background: $color-black
+	border-radius: 14.2px
+	border: 0px solid $color-mediumgrey
+
+input[type=range]::-moz-range-thumb
+	box-shadow: 0px 0px 2.5px rgba(0, 0, 0, 0.28), 0px 0px 0px rgba(13, 13, 13, 0.28)
+	border: 0px solid #ffffff
+	height: 15px
+	width: 15px
+	border-radius: 50px
+	background: #fffffd
+	cursor: pointer
+
+input[type=range]::-ms-track
+	width: 100%
+	height: 17.6px
+	cursor: pointer
+	background: transparent
+	border-color: transparent
+	color: transparent
+
+input[type=range]::-ms-fill-lower
+	background: #e0e0e0
+	border: 0px solid $color-mediumgrey
+	border-radius: 28.4px
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0)
+
+input[type=range]::-ms-fill-upper
+	background: $color-black
+	border: 0px solid $color-mediumgrey
+	border-radius: 28.4px
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0)
+
+input[type=range]::-ms-thumb
+	box-shadow: 0px 0px 2.5px rgba(0, 0, 0, 0.28), 0px 0px 0px rgba(13, 13, 13, 0.28)
+	border: 0px solid #ffffff
+	width: 15px
+	border-radius: 50px
+	background: #fffffd
+	cursor: pointer
+	height: 15px
+
+input[type=range]:focus::-ms-fill-lower
+	background: $color-black
+
+input[type=range]:focus::-ms-fill-upper
+	background: #e6e6e6

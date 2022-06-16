@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	{% load static %}
+	{% load sass_tags %}
+	<title>courrèges assets</title>
+	<meta name="keywords" content="Random Binome" />
+	<meta name="description" content="A simple website showcasting a Random Binome selector" />
+	<meta name="author" content="Bastien Sozeau" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0 minimal-ui">
+	<meta property="og:image" content="{% static 'img/screenshot.png' %}"/>
+	<meta property="og:title" content="Random Binome"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content="http://binome.sozoo.fr/"/>
+	<link rel="icon" href="{% static 'img/favicon.png' %}" />
+	<link href="https://fonts.googleapis.com/css?family=Amiri:400,400i,700,700i|Public+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+	<script type='text/javascript' src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+	<link rel="stylesheet" href="{% static 'css/site-style.css' %}" type="text/css" />
+	<link href="{% sass_src 'sass/style.sass' %}" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+	<header id="header">
+		<div class="logo">courrèges assets</div>		
+		<div class="bs--menu bs--menu-border">
+		  <a class="bs--menu-item" href="/admin"><div class="icon-gauge"></div>Dashboard</a>
+		  <a class="bs--menu-item" href="/"><div class="icon-home"></div>Homepage</a>
+		</div>
+
+	</header>
+	<div class="wrapper">
+		Générer les cartes de visites 
+		<form action="submit" method="post">{% csrf_token %}
+		    <input type="submit" value="Générer">
+		</form>

@@ -1,0 +1,695 @@
+
+// Audio Video
+
+iframe
+	max-width: 100%
+
+.bs__offscreen
+	border: 0
+	clip: rect(1px, 1px, 1px, 1px)
+	-webkit-clip-path: inset(50%)
+	clip-path: inset(50%)
+	height: 1px
+	margin: -1px
+	overflow: hidden
+	padding: 0
+	position: absolute
+	width: 1px
+	word-wrap: normal
+
+.bs__container
+	background: $color-black
+	box-sizing: border-box
+	position: relative
+	text-align: left
+	text-indent: 0
+	vertical-align: top
+	overflow: hidden
+	border-radius: $radius
+
+	*
+		box-sizing: border-box
+
+	video
+		&::-webkit-media-controls, &::-webkit-media-controls-panel, &::-webkit-media-controls-panel-container, &::-webkit-media-controls-start-playback-button
+			-webkit-appearance: none
+			display: none !important
+
+.bs__fill-container
+	height: 100%
+	width: 100%
+
+	.bs__container
+		height: 100%
+		width: 100%
+
+	background: transparent
+	margin: 0 auto
+	overflow: hidden
+	position: relative
+
+.bs__container:focus
+	outline: none
+
+.bs__iframe-overlay
+	height: 100%
+	position: absolute
+	width: 100%
+
+.bs__embed
+	background: #000
+	height: 100%
+	margin: 0
+	overflow: hidden
+	padding: 0
+	width: 100%
+
+	body
+		background: #000
+		height: 100%
+		margin: 0
+		overflow: hidden
+		padding: 0
+		width: 100%
+
+.bs__fullscreen
+	overflow: hidden !important
+
+.bs__container-fullscreen
+	bottom: 0
+	left: 0
+	overflow: hidden
+	position: fixed
+	right: 0
+	top: 0
+	z-index: 1000
+
+	.bs__mediaelement, video
+		height: 100% !important
+		width: 100% !important
+
+.bs__background
+	left: 0
+	position: absolute
+	top: 0
+
+.bs__mediaelement
+	height: 100%
+	left: 0
+	position: absolute
+	top: 0
+	width: 100%
+	z-index: 0
+
+.bs__poster
+	background-position: 50% 50%
+	background-repeat: no-repeat
+	background-size: cover
+	left: 0
+	position: absolute
+	top: 0
+	z-index: 1
+
+\:root .bs__poster-img
+	display: none
+
+.bs__poster-img
+	border: 0
+	padding: 0
+
+.bs__overlay
+	-webkit-box-align: center
+	-webkit-align-items: center
+	-ms-flex-align: center
+	align-items: center
+	display: -webkit-box
+	display: -webkit-flex
+	display: -ms-flexbox
+	display: flex
+	-webkit-box-pack: center
+	-webkit-justify-content: center
+	-ms-flex-pack: center
+	justify-content: center
+	left: 0
+	position: absolute
+	top: 0
+
+.bs__layer
+	z-index: 1
+
+.bs__overlay-play
+	cursor: pointer
+
+.bs__overlay-button:before
+	height: 60px
+	width: 60px
+	content: '\e897'
+	font-size: 5em
+	margin-left: -0.2em
+
+.bs__overlay:hover > .bs__overlay-button:before
+	opacity: 0.9
+
+.bs__overlay-loading
+	height: 80px
+	width: 80px
+
+.bs__overlay-loading-bg-img
+	-webkit-animation: bs__loading-spinner 1s linear infinite
+	animation: bs__loading-spinner 1s linear infinite
+	display: block
+	height: 60px
+	width: 60px
+	z-index: 1
+	border-radius: 100%
+	box-shadow: 1px 2px 2px $color-media
+
+@-webkit-keyframes bs__loading-spinner
+	100%
+		-webkit-transform: rotate(360deg)
+		transform: rotate(360deg)
+
+@keyframes bs__loading-spinner
+	100%
+		-webkit-transform: rotate(360deg)
+		transform: rotate(360deg)
+
+.bs__controls
+	bottom: 0
+	display: -webkit-box
+	display: -webkit-flex
+	display: -ms-flexbox
+	display: flex
+	height: 40px
+	left: 0
+	list-style-type: none
+	margin: 0
+	padding: 0 10px
+	position: absolute
+	width: 100%
+	z-index: 3
+	background: rgba($color-white, 0.9)
+	border-radius: $radius
+
+
+.bs--video-invert .bs__controls, .bs__audio.bs--audio-invert,.bs__audio.bs--audio-invert .bs__controls
+	background: rgba($color-black, 0.9)
+
+
+
+.bs__container-fullscreen .bs__controls
+	padding: 0 15%
+
+.bs__button, .bs__time, .bs__time-rail
+	font-size: 10px
+	height: 40px
+	line-height: 10px
+	margin: 0
+	width: 32px
+
+.bs__overlay-button,.bs__button > button
+	color: $color-media
+
+.bs__button > button
+	border: 0
+	cursor: pointer
+	display: block
+	font-size: 2em
+	height: 20px
+	line-height: 0
+	margin: 10px 6px
+	overflow: hidden
+	padding: 0
+	position: absolute
+	text-decoration: none
+	width: 20px
+	background-color: transparent
+
+	&:focus
+		outline: dotted 1px #999
+
+.bs__container-keyboard-inactive
+	a, button, [role=slider]
+		outline: 0
+
+		&:focus
+			outline: 0
+
+.bs__time
+	box-sizing: content-box
+	color: $color-media
+	font-size: 11px
+	font-weight: bold
+	height: 24px
+	overflow: hidden
+	padding: 16px 6px 0
+	text-align: center
+	width: auto
+
+.bs__play > button:hover
+	background-color: transparent
+	border-color: transparent
+
+.bs__overlay-button, .bs__button > button:before
+	font-family: "icons"
+	font-style: normal
+	font-weight: normal
+	speak: none
+	display: inline-block
+	text-decoration: inherit
+	width: 1.1em
+	text-align: center
+	font-variant: normal
+	text-transform: none
+	line-height: 1em
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+
+.bs__play > button:before
+	content: '\e897'
+
+.bs__pause > button:before
+	content: '\e899'
+
+.bs__replay > button:before
+	content: '\e890'
+
+.bs__time-rail
+	direction: ltr
+	-webkit-box-flex: 1
+	-webkit-flex-grow: 1
+	-ms-flex-positive: 1
+	flex-grow: 1
+	height: 40px
+	margin: 0 10px
+	padding-top: 10px
+	position: relative
+
+.bs__time-total, .bs__time-buffering, .bs__time-loaded, .bs__time-current, .bs__time-float, .bs__time-hovered, .bs__time-float-current, .bs__time-float-corner, .bs__time-marker
+	border-radius: 0px
+	cursor: pointer
+	display: block
+	height: 8px
+	position: absolute
+
+.bs__time-total
+	background: rgba($color-media, 0.3)
+	margin: 7px 0 0
+	width: 100%
+
+.bs__time-buffering
+	-webkit-animation: buffering-stripes 2s linear infinite
+	animation: buffering-stripes 2s linear infinite
+	background: -webkit-linear-gradient(-90deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent)
+	background: linear-gradient(-90deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent)
+	background-size: 10px 15px
+	width: 100%
+
+@-webkit-keyframes buffering-stripes
+	from
+		background-position: 0 0
+
+	to
+		background-position: 20px 0
+
+@keyframes buffering-stripes
+	from
+		background-position: 0 0
+
+	to
+		background-position: 20px 0
+
+.bs__time-loaded
+	background: rgba($color-media, 0.3)
+
+.bs__time-current, .bs__time-handle-content
+	background: rgba($color-media, 0.9)
+
+.bs__time-hovered
+	background: rgba($color-media, 0.5)
+	z-index: 10
+
+	&.negative
+		background: rgba($color-media, 0.2)
+
+.bs__time-current, .bs__time-buffering, .bs__time-loaded, .bs__time-hovered
+	left: 0
+	-webkit-transform: scaleX(0)
+	-ms-transform: scaleX(0)
+	transform: scaleX(0)
+	-webkit-transform-origin: 0 0
+	-ms-transform-origin: 0 0
+	transform-origin: 0 0
+	-webkit-transition: 0.15s ease-in all
+	transition: 0.15s ease-in all
+	width: 100%
+
+.bs__time-buffering
+	-webkit-transform: scaleX(1)
+	-ms-transform: scaleX(1)
+	transform: scaleX(1)
+
+.bs__time-hovered
+	-webkit-transition: height 0.1s cubic-bezier(0.44, 0, 1, 1)
+	transition: height 0.1s cubic-bezier(0.44, 0, 1, 1)
+
+	&.no-hover
+		-webkit-transform: scaleX(0) !important
+		-ms-transform: scaleX(0) !important
+		transform: scaleX(0) !important
+
+.bs__time-handle
+	border: 4px solid transparent
+	cursor: pointer
+	left: 0
+	position: absolute
+	-webkit-transform: translateX(0)
+	-ms-transform: translateX(0)
+	transform: translateX(0)
+	z-index: 11
+
+.bs__time-handle-content
+	border: 4px solid transparent
+	cursor: pointer
+	left: 0
+	position: absolute
+	-webkit-transform: translateX(0)
+	-ms-transform: translateX(0)
+	transform: translateX(0)
+	z-index: 11
+	border: 4px solid rgb(255, 255, 255)
+	border-radius: 50%
+	height: 14px
+	left: -7px
+	top: -7px
+	-webkit-transform: scale(0)
+	-ms-transform: scale(0)
+	transform: scale(0)
+	width: 14px
+
+.bs__time-rail
+	&:hover .bs__time-handle-content
+		-webkit-transform: scale(1)
+		-ms-transform: scale(1)
+		transform: scale(1)
+
+	.bs__time-handle-content
+		&:focus, &:active
+			-webkit-transform: scale(1)
+			-ms-transform: scale(1)
+			transform: scale(1)
+
+.bs__time-float
+	background: $color-lightgrey
+	border-radius: $radius
+	bottom: 100%
+	color: $color-text
+	display: none
+	height: 17px
+	margin-bottom: 9px
+	position: absolute
+	text-align: center
+	-webkit-transform: translateX(-50%)
+	-ms-transform: translateX(-50%)
+	transform: translateX(-50%)
+	width: 42px
+
+.bs__time-float-current
+	display: block
+	left: 0
+	margin: 5px
+	text-align: center
+	width: 30px
+
+.bs__time-float-corner
+	border: solid 5px $color-lightgrey
+	border-color: $color-lightgrey transparent transparent
+	border-radius: 0
+	display: block
+	height: 0
+	left: 50%
+	line-height: 0
+	position: absolute
+	top: 100%
+	-webkit-transform: translateX(-50%)
+	-ms-transform: translateX(-50%)
+	transform: translateX(-50%)
+	width: 0
+
+.bs__long-video
+	.bs__time-float
+		margin-left: -23px
+		width: 64px
+
+	.bs__time-float-current
+		width: 60px
+
+.bs__broadcast
+	color: $color-white
+	height: 10px
+	position: absolute
+	top: 15px
+	width: 100%
+
+.bs__fullscreen-button > button:before
+	content: '\e869'
+
+.bs__unfullscreen > button:before
+	content: '\e86a'
+
+.bs__mute > button:before
+	content: '\e860'
+
+.bs__unmute > button:before
+	content: '\e85f'
+
+.bs__volume-button
+	position: relative
+
+	> .bs__volume-slider
+		-webkit-backface-visibility: hidden
+		background: rgba($color-black, 0.3)
+		border-radius: 0
+		bottom: 100%
+		display: none
+		height: 115px
+		left: 50%
+		margin: 0
+		position: absolute
+		-webkit-transform: translateX(-50%)
+		-ms-transform: translateX(-50%)
+		transform: translateX(-50%)
+		width: 25px
+		z-index: 1
+
+	&:hover
+		border-radius: 0 0 $radius $radius
+
+.bs__volume-total
+	background: rgba($color-media, 0.5)
+	height: 100px
+	left: 50%
+	margin: 0
+	position: absolute
+	top: 8px
+	-webkit-transform: translateX(-50%)
+	-ms-transform: translateX(-50%)
+	transform: translateX(-50%)
+	width: 2px
+
+.bs__volume-current
+	background: rgba($color-media, 0.9)
+	left: 0
+	margin: 0
+	position: absolute
+	width: 100%
+
+.bs__volume-handle
+	background: rgba($color-media, 0.9)
+	border-radius: 1px
+	cursor: ns-resize
+	height: 6px
+	left: 50%
+	position: absolute
+	-webkit-transform: translateX(-50%)
+	-ms-transform: translateX(-50%)
+	transform: translateX(-50%)
+	width: 16px
+
+.bs__horizontal-volume-slider
+	display: block
+	height: 36px
+	position: relative
+	vertical-align: middle
+	width: 56px
+
+.bs__horizontal-volume-total
+	background: rgba($color-media, 0.4)
+	border-radius: $radius
+	font-size: 1px
+	height: 8px
+	left: 0
+	margin: 0
+	padding: 0
+	position: absolute
+	top: 16px
+	width: 50px
+
+.bs__horizontal-volume-current
+	background: rgba($color-media, 0.8)
+	border-radius: $radius
+	font-size: 1px
+	height: 100%
+	left: 0
+	margin: 0
+	padding: 0
+	position: absolute
+	top: 0
+	width: 100%
+
+.bs__horizontal-volume-handle
+	display: none
+
+.bs__captions-button, .bs__chapters-button
+	position: relative
+
+.bs__captions-button > button
+	background-position: -140px 0
+
+.bs__chapters-button > button
+	background-position: -180px 0
+
+.bs__captions-button > .bs__captions-selector
+	background: rgba(50, 50, 50, 0.7)
+	border: solid 1px transparent
+	border-radius: 0
+	bottom: 100%
+	margin-right: -43px
+	overflow: hidden
+	padding: 0
+	position: absolute
+	right: 50%
+	visibility: visible
+	width: 86px
+
+.bs__chapters-button > .bs__chapters-selector
+	background: rgba(50, 50, 50, 0.7)
+	border: solid 1px transparent
+	border-radius: 0
+	bottom: 100%
+	margin-right: -43px
+	overflow: hidden
+	padding: 0
+	position: absolute
+	right: 50%
+	visibility: visible
+	width: 86px
+	margin-right: -55px
+	width: 110px
+
+.bs__captions-selector-list, .bs__chapters-selector-list
+	list-style-type: none !important
+	margin: 0
+	overflow: hidden
+	padding: 0
+
+.bs__captions-selector-list-item, .bs__chapters-selector-list-item
+	color: $color-white
+	cursor: pointer
+	display: block
+	list-style-type: none !important
+	margin: 0 0 6px
+	overflow: hidden
+	padding: 0
+
+.bs__captions-selector-list-item:hover, .bs__chapters-selector-list-item:hover
+	background-color: rgb(200, 200, 200) !important
+	background-color: rgba(255, 255, 255, 0.4) !important
+
+.bs__captions-selector-input, .bs__chapters-selector-input
+	clear: both
+	float: left
+	left: -1000px
+	margin: 3px 3px 0 5px
+	position: absolute
+
+.bs__captions-selector-label, .bs__chapters-selector-label
+	cursor: pointer
+	float: left
+	font-size: 10px
+	line-height: 15px
+	padding: 4px 10px 0
+	width: 100%
+
+.bs__captions-selected, .bs__chapters-selected
+	color: rgba(33, 248, 248, 1)
+
+.bs__captions-translations
+	font-size: 10px
+	margin: 0 0 5px
+
+.bs__captions-layer
+	bottom: 0
+	color: $color-white
+	font-size: 16px
+	left: 0
+	line-height: 20px
+	position: absolute
+	text-align: center
+
+	a
+		color: $color-white
+		text-decoration: underline
+
+	&[lang=ar]
+		font-size: 20px
+		font-weight: normal
+
+.bs__captions-position
+	bottom: 15px
+	left: 0
+	position: absolute
+	width: 100%
+
+.bs__captions-position-hover
+	bottom: 35px
+
+.bs__captions-text
+	background: rgba(20, 20, 20, 0.5)
+	box-shadow: 5px 0 0 rgba(20, 20, 20, 0.5), -5px 0 0 rgba(20, 20, 20, 0.5)
+	padding: 0
+	white-space: pre-wrap
+
+	*
+		background: rgba(20, 20, 20, 0.5)
+		box-shadow: 5px 0 0 rgba(20, 20, 20, 0.5), -5px 0 0 rgba(20, 20, 20, 0.5)
+		padding: 0
+		white-space: pre-wrap
+
+.bs__container.bs__hide-cues video::-webkit-media-text-track-container
+	display: none
+
+.bs__overlay-error
+	position: relative
+
+	> img
+		left: 0
+		max-width: 100%
+		position: absolute
+		top: 0
+		z-index: -1
+
+.bs__cannotplay
+	color: $color-white
+	font-size: 0.8em
+
+	a
+		color: $color-white
+		font-size: 0.8em
+
+	position: relative
+
+	p, a
+		display: inline-block
+		padding: 0 15px
+		width: 100%

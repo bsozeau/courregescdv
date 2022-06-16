@@ -1,0 +1,11 @@
+{% include "head.html" %}
+
+<h1>Les cartes de visite sont prêtes</h1>
+<div class="resultats">
+	
+{{ resultbin | safe}}
+
+</div>
+{% block page_content %}
+{% endblock %}
+{% include "footer.html" %}

@@ -1,0 +1,96 @@
+
+// Table
+
+
+table
+    border-spacing: 0
+    width: 100%
+
+    caption
+        background: $color-lightgrey
+        padding: 1em
+    
+    thead th
+        font-weight: 600
+
+
+td,
+th
+    border-bottom: .1rem solid $color-darkgrey
+    padding: 1.2rem 1.5rem
+    text-align: left
+
+    &:first-child
+        padding-left: 0
+
+    &:last-child
+        padding-right: 0
+
+@media only screen and (max-width: 992px)
+    table td:empty:before
+        content: '\00a0'
+
+    table
+        width: 100%
+        border-collapse: collapse
+        border-spacing: 0
+        display: block
+        position: relative
+
+        caption
+            width: 100%
+            display: block
+
+        th,
+        td
+	        margin: 0
+	        vertical-align: top
+
+	        &:first-child
+		        padding: 1.2rem 1.5rem
+		
+	        &:last-child
+		        padding: 1.2rem 1.5rem
+    
+        th
+	        text-align: left
+    
+        thead
+	        display: block
+	        float: left
+    
+        thead tr
+	        display: block
+	        padding: 0 10px 0 0
+	    
+	        & th::before
+	            content: "\00a0"
+
+        tbody
+	        display: block
+	        width: auto
+	        position: relative
+	        overflow-x: auto
+	        white-space: nowrap
+    
+	        & tr
+	            display: inline-block
+	            vertical-align: top
+    
+        th
+	        display: block
+	        text-align: right
+    
+        td
+	        display: block
+	        min-height: 1.25em
+	        text-align: left
+    
+        tr
+	        border-bottom: none
+	        padding: 0 10px
+    
+        thead
+	        border: 0
+	        border-right: 1px solid rgba(0,0,0,0.12)
+        
