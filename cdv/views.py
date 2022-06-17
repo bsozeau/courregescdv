@@ -142,10 +142,10 @@ def submit(request):
 				output.addPage(page2)
 		
 				# finally, write "output" to a real file
-				outputStream = open('static/export/cdv_'+Email.split('@')[0].replace('.','_').lower()+'.pdf', "wb")
+				outputStream = open('media/cdv_'+Email.split('@')[0].replace('.','_').lower()+'.pdf', "wb+")
 				output.write(outputStream)
 				outputStream.close()
-				resultbin.append('<a target="_blank" href="static/export/cdv_'+Email.split('@')[0].replace('.','_').lower()+'.pdf">'+profilHtml+'</a>')
+				resultbin.append('<a target="_blank" href="media/cdv_'+Email.split('@')[0].replace('.','_').lower()+'.pdf">'+profilHtml+'</a>')
 
 		result = { 'resultbin' : ' '.join(resultbin) }
 	return render(request, "submit.html",result )
