@@ -7,5 +7,4 @@ urlpatterns = [
     path('', views.cdv_index, name='cdv_index'),
     path('submit', views.submit, name='cdv_submit'),
 
-#
 ]
