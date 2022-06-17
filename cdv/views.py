@@ -3,6 +3,9 @@ import random
 
 # Create your views here.
 from django.http import HttpResponse
+
+from django.http import FileResponse, Http404
+
 from cdv.models import Post
 from django import forms
 
@@ -53,6 +56,11 @@ teamMember = Table('keyUn385Sk8pP3Am7', 'appddWm2tbNXoJu09', 'Team Courrèges')
 
 
 
+def pdf_view(request):
+    try:
+        return FileResponse(open('foobar.pdf', 'rb'), content_type='application/pdf')
+    except FileNotFoundError:
+        raise Http404()
 
 
 def cdv_index(request):
