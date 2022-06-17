@@ -10,6 +10,7 @@ from . import views
 urlpatterns = [
     path('', views.cdv_index, name='cdv_index'),
     path('submit', views.submit, name='cdv_submit'),
+    path('orga', views.cdv_orga, name='cdv_orga'),
     re_path(r'^media/(?P<path>.*)$', serve, {
         'document_root': settings.MEDIA_ROOT,
     }),

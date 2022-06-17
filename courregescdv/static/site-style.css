@@ -18,9 +18,9 @@ body {
 }
 
 .wrapper {
-    max-width: 1200px;
-    width: 85%;
-    margin: 0 0 0 15%;
+    max-width: 100%;
+    width: 90%;
+    margin: 0 5%;
     background: white;
     padding: 2em 3em;
 }
@@ -199,9 +199,7 @@ form label {
 	display: inline-block;width: 20%;}
 
 form div {
-    display: inline-block;
-    width: 47%;
-}
+ }
 @media screen and ( max-width: 940px ) {
     .wrapper,#header {
         width: 96%;

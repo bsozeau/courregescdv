@@ -18,19 +18,32 @@
 	<script type='text/javascript' src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 	<link rel="stylesheet" href="{% static 'css/site-style.css' %}" type="text/css" />
 	<link href="{% sass_src 'sass/style.sass' %}" rel="stylesheet" type="text/css" />
+	<script src="https://balkan.app/js/OrgChart.js"></script>
+
+	<style>
+	html,body{font-family: 'graphik-regular'; }
+	.card_text{font-family: graphik-regular; }
+	.card_text-dept{
+		text-transform:uppercase;
+		background:blue;
+		padding:10px;
+	}
+	</style> 
 
 </head>
 <body>
 	<header id="header">
 		<div class="logo">courrèges assets</div>		
 		<div class="bs--menu bs--menu-border">
-		  <a class="bs--menu-item" href="/admin"><div class="icon-gauge"></div>Dashboard</a>
+<!-- 		  <a class="bs--menu-item" href="/admin"><div class="icon-gauge"></div>Dashboard</a> -->
 		  <a class="bs--menu-item" href="/"><div class="icon-home"></div>Homepage</a>
 		</div>
 
 	</header>
 	<div class="wrapper">
-		Générer les cartes de visites 
+		<h4>Générer les cartes de visites </h4>
 		<form action="submit" method="post">{% csrf_token %}
 		    <input type="submit" value="Générer">
 		</form>
+
+		<h4><a href="/orga">Voir l'organigramme</a></h4>
