@@ -213,7 +213,7 @@ def cdv_orga(request):
 		enableDragDrop: true,
 		filterBy: ['dept'],
 		orderBy: "myOrderId",
-		levelSeparation: 40,
+		levelSeparation: 41,
 		mouseScrool: OrgChart.action.scroll,
 		showYScroll: OrgChart.scroll.visible,
 		showXScroll: OrgChart.scroll.visible,
@@ -287,7 +287,7 @@ def cdv_orga(request):
 			},
 		},
 		slinks: [
-			{ from: 22, to: 15, template: 'yellow', label: '' },
+			{ from: 22, to: 15, template: 'blue', label: '' },
 		],
 		nodes: [
 '''
