@@ -266,12 +266,12 @@ def cdv_orga(request):
 				template: "group",
 				subTreeConfig: {
 					siblingSeparation: 10,
-					columns: 
 					'''
+#					columns: 
 #		if int(departementsSize[id]) > 20 :
 #			contentHtml += str( int(int(departementsSize[id])/2) )
 #		else:
-		contentHtml += str( (int(departementsSize[id])) ) 
+#		contentHtml += str(int(departementsSize[id])) 
 		contentHtml += '''
 				}
 			},'''
