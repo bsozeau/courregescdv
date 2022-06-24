@@ -213,6 +213,7 @@ def cdv_orga(request):
 		enableDragDrop: true,
 		filterBy: ['dept'],
 		orderBy: "myOrderId",
+		levelSeparation: 40,
 		mouseScrool: OrgChart.action.scroll,
 		showYScroll: OrgChart.scroll.visible,
 		showXScroll: OrgChart.scroll.visible,
@@ -222,7 +223,6 @@ def cdv_orga(request):
 		nodeMenu: {
 			details: { text: "Details" },
 			edit: { text: "Edit" },
-			add: { text: "Add" },
 			remove: { text: "Remove" }
 		},
 		menu: {
@@ -231,10 +231,19 @@ def cdv_orga(request):
 				icon: OrgChart.icon.pdf(24, 24, '#7A7A7A'),
 				onClick: preview
 			},
-			pdf: { text: "Export PDF" },
-			png: { text: "Export PNG" },
-			svg: { text: "Export SVG" },
-			csv: { text: "Export CSV" }
+//			pdf: { text: "Export PDF" }
+		},
+		editForm: {
+			buttons:  {
+				pdf: null,
+				share: null
+			},
+			generateElementsFromFields: false,
+			elements: [
+				{ type: 'textbox', label: 'Nom', binding: 'name'},
+				{ type: 'textbox', label: 'Titre', binding: 'title'},
+				{ type: 'textbox', label: 'Departement', binding: 'deptartement'}
+			]
 		},
 		nodeBinding: {
 			imgs: "img",
@@ -256,7 +265,7 @@ def cdv_orga(request):
 		contentHtml += '"'+''.join(x for x in dept if x.isalnum())+'''-group": {
 				template: "group",
 				subTreeConfig: {
-					siblingSeparation: 3,
+					siblingSeparation: 10,
 					columns: 
 					'''
 #		if int(departementsSize[id]) > 20 :
@@ -271,7 +280,7 @@ def cdv_orga(request):
 		"Image-group": {
 				template: "group",
 				subTreeConfig: {
-					siblingSeparation: 3,
+					siblingSeparation: 10,
 					columns: 
 					2
 				}
@@ -519,8 +528,10 @@ def cdv_orga(request):
 
 		var len = markedCheckbox.length;
 		for (var i=0; i<len; i++) {
-			organigrammeHeader += ' - ';
-			organigrammeHeader += markedCheckbox[i].name;
+			if(markedCheckbox[i].name != 'Direction'){
+				organigrammeHeader += ' - ';
+				organigrammeHeader += markedCheckbox[i].name;
+			}
 		}
 		
 		
@@ -533,6 +544,7 @@ def cdv_orga(request):
 	}	
 	chart.on('exportstart', function (sender, args) {
 		args.styles = document.getElementById('myStyles').outerHTML;
+
 	});
 	
 
