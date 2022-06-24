@@ -17,6 +17,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Amiri:400,400i,700,700i|Public+Sans:400,400i,700,900&display=swap" rel="stylesheet">
 	<script type='text/javascript' src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 	<link rel="stylesheet" href="{% static 'css/site-style.css' %}" type="text/css" />
+	<script type='text/javascript' src="{% static 'js/d3.min.js' %}"></script>
+	
 	<link href="{% sass_src 'sass/style.sass' %}" rel="stylesheet" type="text/css" />
 	<script src="https://balkan.app/js/OrgChart.js"></script>
 
@@ -27,23 +29,31 @@
 		text-transform:uppercase;
 		background:blue;
 		padding:10px;
-	}
-	</style> 
+	}div#boc-ppdf-wrapper {
+    top: 100px !important;
+}
 
-</head>
+div#boc-ppdf-btns {
+    top: 100px !important;
+    left: 0px !important;
+    width: 290px !important;
+    padding: 20px !important;
+}
+	</style> 
+	<style id="myStyles">
+g.node.group>rect {
+    fill: #FFFFFF;
+    stroke: #e4e4e4; 
+    stroke-width: 3;
+}
+	</style> </head>
 <body>
 	<header id="header">
-		<div class="logo">courrèges assets</div>		
 		<div class="bs--menu bs--menu-border">
-<!-- 		  <a class="bs--menu-item" href="/admin"><div class="icon-gauge"></div>Dashboard</a> -->
-		  <a class="bs--menu-item" href="/"><div class="icon-home"></div>Homepage</a>
+			<a class="bs--menu-item" href="/"><div class="icon-home"></div>Homepage</a>			
+			<a class="bs--menu-item" href="/orga"><div class="icon-users"></div> Voir l'organigramme</a>
+			<form action="submit" method="post" style="margin: 0;" >{% csrf_token %}
+				<div class="icon-vcard" style="float: left;line-height: 2.9;margin: 0 0 0 1em;"></div><input class="bs--menu-item" style="margin: 0;line-height: 1;background: 0 0;padding: 0.92857143em 1.14285714em;text-transform: none;color: rgba(0,0,0,0.87);font-weight: 400;font-size: inherit;border: none;letter-spacing: 0;padding: 0.92857143em 1.14285714em 0.92857143em 0.142857em;" type="submit" value="Générer les cartes de visites">
+			</form>
 		</div>
-
 	</header>
-	<div class="wrapper">
-		<h4>Générer les cartes de visites </h4>
-		<form action="submit" method="post">{% csrf_token %}
-		    <input type="submit" value="Générer">
-		</form>
-
-		<h4><a href="/orga">Voir l'organigramme</a></h4>

@@ -126,7 +126,7 @@ COMPRESS_ENABLED=True
 SASS_OUTPUT_STYLE = 'compressed'
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 PROJECT_ROOT = os.path.abspath(os.path.join(__file__, os.path.pardir))
 
