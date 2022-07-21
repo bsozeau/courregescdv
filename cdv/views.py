@@ -381,6 +381,8 @@ def cdv_orga(request):
 
 			if 'Trombi' in item['fields']:
 				Trombi = str(item['fields']['Trombi'][0]['thumbnails']['large']['url'])
+			else:
+				Trombi = 'https://courregescdv.herokuapp.com/static/img/AC.png'
 
 			if "Courrèges" not in Nom:
 	
