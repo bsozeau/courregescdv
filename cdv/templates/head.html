@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	{% load static %}
-	{% load sass_tags %}
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />{% load static %}{% load sass_tags %}
 	<title>courrèges assets</title>
 	<meta name="robots" content="noindex">
 	<meta name="description" content="courreges internal tools" />
@@ -13,60 +11,9 @@
 	<link rel="stylesheet" href="{% static 'css/site-style.css' %}" type="text/css" />
 	<link href="{% sass_src 'sass/style.sass' %}" rel="stylesheet" type="text/css" />
 	<script src="https://balkan.app/js/OrgChart.js"></script>
-
-	<style>
-	html,body{font-family: 'graphik-regular'; }
-	.card_text{font-family: graphik-regular; }
-	.card_text-dept{
-		text-transform:uppercase;
-		background:blue;
-		padding:10px;
-	}div#boc-ppdf-wrapper {
-    top: 100px !important;
-}
-
-div#boc-avatar img {
-    height: auto !important;
-    border-radius: 0 !important;
-}
-
-div#boc-avatar {
-    box-shadow: none;
-    border-radius: 0;
-    border: none;
-    overflow: hidden;
-    transform: translateX(-50%);
-    background:none;
-}
-
-.boc-edit-form-header {
-    background-color: #c6c6c6 !important;
-    border-radius: 0 !important;
-}
-
-.boc-img-button {
-    background-color: gray !important;
-}
-
-div#boc-ppdf-btns {
-    top: 100px !important;
-    left: 0px !important;
-    width: 290px !important;
-    padding: 20px !important;
-}
-	</style> 
-	<style id="myStyles" >
-g.node.group>rect {
-    fill: #FFFFFF;
-    stroke: #e4e4e4; 
-    stroke-width: 3;
-}
-.node.filter, g.link.filter {display: none;}
-
-	</style>
+	<style id="myStyles" >g.node.group>rect {fill: #FFFFFF;stroke: #e4e4e4;stroke-width: 3;}.node.filter, g.link.filter {display: none;}</style>
 	</head>
 <body>
-	
 	<header id="header">
 		<div class="bs--menu bs--menu-border">
 			<a class="bs--menu-item" href="/"><div class="icon-home"></div>Homepage</a>			

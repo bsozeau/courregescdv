@@ -30,6 +30,46 @@
 body {
     background: #f7f7f7
 }
+	html,body{font-family: 'graphik-regular'; }
+	.card_text{font-family: graphik-regular; }
+	.card_text-dept{
+		text-transform:uppercase;
+		background:blue;
+		padding:10px;
+	}
+	div#boc-ppdf-wrapper {
+    	top: 100px !important;
+	}
+
+	div#boc-avatar img {
+	    height: auto !important;
+	    border-radius: 0 !important;
+	}
+	
+	div#boc-avatar {
+	    box-shadow: none;
+	    border-radius: 0;
+	    border: none;
+	    overflow: hidden;
+	    transform: translateX(-50%);
+	    background:none;
+	}
+	
+	.boc-edit-form-header {
+	    background-color: #c6c6c6 !important;
+	    border-radius: 0 !important;
+	}
+	
+	.boc-img-button {
+	    background-color: gray !important;
+	}
+	
+	div#boc-ppdf-btns {
+	    top: 100px !important;
+	    left: 0px !important;
+	    width: 290px !important;
+	    padding: 20px !important;
+	}
 
 .resultats a {
     display: inline-block;

@@ -1,8 +1,2 @@
-{% load static %}
-{% include "head.html" %}
-<div id="id-content" style="display: none">
-</div>
-{{ contentHtml | safe}}
-{% block page_content %}
-{% endblock %}
+{% load static %}{% include "head.html" %}{{ contentHtml | safe}}{% block page_content %}{% endblock %}
 {% include "footer.html" %}

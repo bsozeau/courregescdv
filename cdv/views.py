@@ -54,7 +54,6 @@ departementsSize = {}
 managerNames = {}
 peopleNames = {}
 
-# Registered font family
 pdfmetrics.registerFont(TTFont('Graphik-Regular', 'cdv/dev/Graphik-Regular.ttf'))
 registerFontFamily('Graphik-Regular',normal='Graphik-Regular')
 
@@ -171,14 +170,13 @@ def cdv_orga(request):
 						if item['fields']['Name'] != 'Boutique':
 							departementsNames[item['id']] = item['fields']['Name']
 							departementsSize[item['id']] = item['fields']['Overall team size']
-
 	deptList = []
 
 	contentHtml = '''
-<div style="position:fixed; top:0;width:100%; height:100vh;" id="orga"/>
-	<div style="width:100%; height:100vh;" id="tree"/></div>
-</div>
-<script type="text/javascript"">
+	<div style="position:fixed; top:0;width:100%; height:100vh;" id="orga"/>
+		<div style="width:100%; height:100vh;" id="tree"/></div>
+	</div>
+	<script type="text/javascript"">
 	OrgChart.templates.myTemplate = Object.assign({}, OrgChart.templates.ula);
 	OrgChart.templates.myTemplate.size = [180, 300];
 	OrgChart.templates.myTemplate.img_0 = '<clipPath id="{randId}"><circle cx="90" cy="90" r="80"></circle></clipPath>'
@@ -208,10 +206,9 @@ def cdv_orga(request):
 	var chart = new OrgChart(document.getElementById("tree"), {
 		template: "myTemplate",
 		scaleInitial: 0.5,
-//		scaleInitial: OrgChart.match.width,
 		enableSearch: true,
 		enableDragDrop: true,
-		filterBy: ['dept'],
+		filterBy: ['deptartement'],
 		orderBy: "myOrderId",
 		levelSeparation: 41,
 		mouseScrool: OrgChart.action.scroll,
@@ -231,7 +228,6 @@ def cdv_orga(request):
 				icon: OrgChart.icon.pdf(24, 24, '#7A7A7A'),
 				onClick: preview
 			},
-//			pdf: { text: "Export PDF" }
 		},
 		editForm: {
 			buttons:  {
@@ -259,23 +255,16 @@ def cdv_orga(request):
 			filter: {
 				template: 'dot'
 			},
-	'''
-
+			'''
 	for id, dept in departementsNames.items():
 		contentHtml += '"'+''.join(x for x in dept if x.isalnum())+'''-group": {
 				template: "group",
 				subTreeConfig: {
 					siblingSeparation: 10,
-					'''
-#					columns: 
-#		if int(departementsSize[id]) > 20 :
-#			contentHtml += str( int(int(departementsSize[id])/2) )
-#		else:
-#		contentHtml += str(int(departementsSize[id])) 
-		contentHtml += '''
+					columns: 20
+
 				}
 			},'''
-	contentHtml += '//'+str(departementsNames)+'\n'
 	contentHtml += '''
 		"Image-group": {
 				template: "group",
@@ -289,8 +278,7 @@ def cdv_orga(request):
 		slinks: [
 			{ from: 22, to: 15, template: 'blue', label: '' },
 		],
-		nodes: [
-'''
+		nodes: ['''
 	count = 0
 	for records in teamMember.iterate(page_size=100, max_records=1000, view='Assets',sort=['Reporting to']  ):
 		for item in records:
@@ -325,9 +313,6 @@ def cdv_orga(request):
 	totalMember = count
 	totalMemberFreeze = count+1
 	count = 0
-	contentHtml += '//'+str(managerNames)+'\n'
-	contentHtml += '//'+str(peopleNames)+'\n'
-	
 	
 	for records in teamMember.iterate(page_size=100, max_records=1000, view='Assets',sort=['Reporting to'] ):
 		for item in records:
@@ -357,16 +342,13 @@ def cdv_orga(request):
 							else:
 								if 'Reporting to' in item['fields']:
 									contentHtml += 'pid: '+str(peopleNames[ str(item['fields']['Nom'])]['id'] )+', '
-							contentHtml += 'myOrderId : '+str(count)+', name : "'+str(Depart)+'", tags:["'+str(''.join(x for x in Depart if x.isalnum()))+'-group", "group"] },\n'
+							contentHtml += 'myOrderId : '+str(count)+', name : "'+str(Depart)+'", tags:["'+str(''.join(x for x in Depart if x.isalnum()))+'-group", "group"] },'
 		
 					deptList.append(Depart)
 
 	deptList = []
-
 	contentHtml += '{ id: 0, pid: 13, myOrderId : 0, name : "Image", tags:["Image-group", "group"] },'
 
-
-	#sort=['Départment', 'Reporting to']
 	for records in teamMember.iterate(page_size=100, max_records=1000, view='Assets',sort=['Org Chart Group'] ):
 		for item in records:
 			count = count+1
@@ -391,12 +373,14 @@ def cdv_orga(request):
 			if 'Email' in item['fields']:
 				Email = item['fields']['Email']
 
-
 			if 'Poste fixe' in item['fields']:
 				Fixe = 'T'+item['fields']['Poste fixe']
 
 			if 'Portable' in item['fields']:
 				Portable = 'M'+item['fields']['Portable']
+
+			if 'Trombi' in item['fields']:
+				Trombi = str(item['fields']['Trombi'][0]['thumbnails']['large']['url'])
 
 			if "Courrèges" not in Nom:
 	
@@ -419,7 +403,6 @@ def cdv_orga(request):
 							reportingToManagerName = str(managerNames[reportingToManagerAirID]['name']  )
 							reportingToManagerId = str(managerNames[reportingToManagerAirID]['id']  )
 
-
 				if Nom != 'Christelle Guerniou':
 					contentHtml += '{ id: '+str(peopleNames[ str(item['fields']['Nom'])]['id'] )+', '
 		
@@ -428,8 +411,6 @@ def cdv_orga(request):
 					else:
 						inAGroup = True
 					deptList.append(Depart)
-		
-		
 		
 					if Nom == 'Adrien Da Maia':
 						relations = ''
@@ -454,12 +435,9 @@ def cdv_orga(request):
 							relations += 'inagroup: true, '
 	
 					contentHtml += relations
-	
-		
+
 					if Nom == 'Romain Levy':
 						contentHtml += 'tags: ["partner"], '
-		
-			
 			
 					contentHtml += 'myOrderId : '+str(count)+', '
 					contentHtml += 'name : "'+Nom+'", '
@@ -467,15 +445,13 @@ def cdv_orga(request):
 					#report to '+str(reportingToName)+' that report to '+str(reportingToManagerName)+'", '
 					contentHtml += 'dept : "'+Depart+'", '
 					contentHtml += 'deptartement : "'+Depart+'", '
-					contentHtml += 'img : "'+str(item['fields']['Trombi'][0]['thumbnails']['large']['url'])+'" },\n'
-						
-			
-	contentHtml += ''']});
-
+					contentHtml += 'img : "'+Trombi+'" },'
+	
+	contentHtml += ''']
+	});
 	chart.on('drop', function (sender, draggedNodeId, droppedNodeId) {
 		var draggedNode = sender.getNode(draggedNodeId);
-		var droppedNode = sender.getNode(droppedNodeId);
-		
+		var droppedNode = sender.getNode(droppedNodeId);	
 		if (droppedNode.tags.indexOf("group") != -1 && draggedNode.tags.indexOf("group") == -1) {
 			var draggedNodeData = sender.get(draggedNode.id);
 			draggedNodeData.pid = null;
@@ -483,20 +459,17 @@ def cdv_orga(request):
 			sender.updateNode(draggedNodeData);
 			return false;
 		}
-	 if (draggedNode.level == droppedNode.level){
-
-		var draggedNodeData = sender.get(draggedNodeId);
-		var droppedNodeData = sender.get(droppedNodeId);
-
-		var orderID = draggedNodeData.myOrderId;
-		draggedNodeData.myOrderId = droppedNodeData.myOrderId;
-		droppedNodeData.myOrderId = orderID;
-		sender.update(draggedNodeData);
-		sender.update(droppedNodeData);
-		sender.draw();
-		return false; 
-	}
-
+		 if (draggedNode.level == droppedNode.level){
+			var draggedNodeData = sender.get(draggedNodeId);
+			var droppedNodeData = sender.get(droppedNodeId);
+			var orderID = draggedNodeData.myOrderId;
+			draggedNodeData.myOrderId = droppedNodeData.myOrderId;
+			droppedNodeData.myOrderId = orderID;
+			sender.update(draggedNodeData);
+			sender.update(droppedNodeData);
+			sender.draw();
+			return false; 
+		}
 	});
 	chart.on('field', function (sender, args) {
 		if (args.node.min) {
@@ -523,9 +496,7 @@ def cdv_orga(request):
 	});
 	function preview() {
 		let organigrammeHeader = 'Organigramme courrèges';
-
 		var markedCheckbox = document.querySelectorAll('input[type="checkbox"]:checked');
-
 		var len = markedCheckbox.length;
 		for (var i=0; i<len; i++) {
 			if(markedCheckbox[i].name != 'Direction'){
@@ -533,8 +504,6 @@ def cdv_orga(request):
 				organigrammeHeader += markedCheckbox[i].name;
 			}
 		}
-		
-		
 		OrgChart.pdfPrevUI.show(chart, {
 			format: "A3",
 			landscape: 'true',
@@ -544,13 +513,9 @@ def cdv_orga(request):
 	}	
 	chart.on('exportstart', function (sender, args) {
 		args.styles = document.getElementById('myStyles').outerHTML;
-
 	});
-	
-
 	</script>
 </div>'''
-
 	context = {
 		"contentHtml": contentHtml,
 	}
