@@ -228,6 +228,13 @@ def cdv_orga(request):
 				icon: OrgChart.icon.pdf(24, 24, '#7A7A7A'),
 				onClick: preview
 			},
+            csv: { text: "Export CSV" },
+			importCSV: { 
+              text: "Import CSV",
+              icon: OrgChart.icon.csv(24,24, '#7A7A7A'),
+              onClick: function(){ chart.importCSV(); }
+          },
+
 		},
 		editForm: {
 			buttons:  {
